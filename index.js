@@ -26,7 +26,7 @@ app.use(cookieParser());
 //------------ ROUTE MIDDLEWARES -------------
 app.use("/api/kaninchen", bunniesRouter);
 app.use("/api/tierheime", sheltersRouter);
-app.use("/api/users", usersRouter);
+// app.use("/api/users", usersRouter);
 
 //------------ ERROR HANDLING ----------------
 app.use(errorHandler);
