@@ -53,7 +53,6 @@ export const login = asyncHandler(async (req, res) => {
     body: { email, password },
   } = req;
 
-  console.log("LOGGING IN");
   // VALIDATE LOGIN DATA
   const { error } = loginValidation({ email, password });
   if (error) throw new ErrorResponse(error.details[0].message, 400);
@@ -93,7 +92,6 @@ export const login = asyncHandler(async (req, res) => {
     { _id: _id },
     { refresh_token: refreshToken, access_token: token }
   );
-  console.log("Kurz vorm Ende beim Login ");
   res.json({ token: token, refreshToken: refreshToken, id: _id });
 });
 
@@ -164,15 +162,13 @@ export const checkAccessTokenRefresh = asyncHandler(async (req, res) => {
   const {
     cookies: { accessToken },
   } = req;
-  console.log(req.cookies);
-  console.log("COOOKIES");
-  console.log("CHECKING ACCES TOKEN");
   if (!accessToken) throw new ErrorResponse("Please log in.", 401);
+
   // VERIFY TOKEN
   const { _id } = jwt.verify(accessToken, process.env.TOKEN_SECRET);
+
   // FIND USER DATA USING _id AND PASSING IT ALONG
   const user = await User.findById(_id); // WHY THIS CHECK?
   if (!user) throw new ErrorResponse("User does not exist", 404);
-  console.log("kurz vorm Ende beim Check Access Token");
   res.json({ loggedIn: true, id: _id });
 });

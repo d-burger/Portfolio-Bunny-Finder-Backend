@@ -9,10 +9,10 @@ import {
 
 const usersRouter = Router();
 
-usersRouter.route("/register").post(register);
-usersRouter.route("/login").post(login);
-usersRouter.route("/token").post(newAccessToken);
-usersRouter.route("/logout").delete(logout);
-usersRouter.route("/accesstoken").get(checkAccessTokenRefresh);
+// usersRouter.route("/register").post(register);
+// usersRouter.route("/login").post(login);
+// usersRouter.route("/token").post(newAccessToken);
+// usersRouter.route("/logout").delete(logout);
+// usersRouter.route("/accesstoken").get(checkAccessTokenRefresh);
 
 export default usersRouter;
